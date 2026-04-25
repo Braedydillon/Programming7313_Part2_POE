@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Tracker</string>
+    <string name="click_here_to_login">Click here to login</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_password">Please enter your password</string>
+    <string name="don_t_have_an_account_click_here">Don\'t have an account? Click here</string>
+    <string name="welcome_to_the_tracker">Welcome to the Tracker</string>
+    <string name="already_have_an_account_click">Already have an account? Click</string>
+    <string name="register_page">Register Page</string>
+    <string name="register_your_account">Register your account</string>
+    <string name="please_enter_your_name2">Please enter your name</string>
+    <string name="please_enter_your_password2">Please enter your password</string>
+    <string name="please_confirm_your_password">Please confirm your password</string>
+    <string name="analyser">Analyser</string>
+    <string name="welcome_user">Welcome user</string>
+    <string name="expenses">Expenses</string>
+    <string name="reports">Reports</string>
+    <string name="logout">Logout</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="save">Save</string>
+    <string name="save2">Save</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_your_category">Enter your category</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="enter_a_description">Enter a description</string>
+    <string name="enter_a_maximum_goal">Enter a maximum goal</string>
+    <string name="enter_a_minimum_goal">Enter a minimum goal</string>
+    <string name="managing">Managing</string>
+    <string name="monthly_goals">Monthly Goals</string>
+    <string name="enter_a_start_date">Enter a Start Date</string>
+    <string name="enter_a_end_date">Enter a End Date</string>
+    <string name="filter_expenses">Filter Expenses</string>
+    <string name="total_r0_00">Total: R0:00</string>
+    <string name="expenses_will_appear_here">Expenses will appear here</string>
+    <string name="report">Report</string>
+</resources>
