@@ -45,6 +45,9 @@ class Home : AppCompatActivity() {
             Toast.makeText(this,"Loging you out", Toast.LENGTH_SHORT).show()
         }
 
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
