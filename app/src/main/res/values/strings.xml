@@ -33,4 +33,7 @@
     <string name="total_r0_00">Total: R0:00</string>
     <string name="expenses_will_appear_here">Expenses will appear here</string>
     <string name="report">Report</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="enter_a_minimum_goal1">Enter a minimum goal</string>
 </resources>

@@ -39,12 +39,11 @@
         android:id="@+id/edtDate"
         android:layout_width="384dp"
         android:layout_height="48dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="@string/enter_date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCategory"
         tools:ignore="Autofill" />
@@ -60,7 +59,6 @@
         android:inputType="text"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtDate" />
 
@@ -121,7 +119,7 @@
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
-        android:hint="Enter a minimum goal"
+        android:hint="@string/enter_a_minimum_goal1"
         android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
