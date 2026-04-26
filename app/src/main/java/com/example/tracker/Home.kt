@@ -29,6 +29,7 @@ class Home : AppCompatActivity() {
         btnReports = findViewById(R.id.btnReports)
         btnLogout = findViewById(R.id.btnLogout)
 
+
         btnExpenses.setOnClickListener {
             Toast.makeText(this,"Open the expenses screen", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, Expenses::class.java)
