@@ -65,10 +65,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="@string/don_t_have_an_account_click_here"
+        android:layout_width="242dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/white"
+        android:text="@string/register"
+        android:textColor="#070707"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
