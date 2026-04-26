@@ -43,8 +43,7 @@ class Home : AppCompatActivity() {
         }
 
         btnLogout.setOnClickListener {
-            Toast.makeText(this,"Loging you out", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(this, "Logging you out", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
