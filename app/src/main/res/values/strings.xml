@@ -38,4 +38,5 @@
     <string name="enter_a_minimum_goal1">Enter a minimum goal</string>
     <string name="search_by_name_or_category">Search by name or category</string>
     <string name="return_home">Return Home</string>
+    <string name="you_can_filter_by_start_and_end_date_or_just_name">You can filter by start and end date or just name</string>
 </resources>

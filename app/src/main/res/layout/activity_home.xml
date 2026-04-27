@@ -29,11 +29,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="@string/welcome_user"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="TextContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnExpenses"
@@ -52,12 +54,13 @@
         android:layout_width="242dp"
         android:layout_height="54dp"
         android:layout_marginTop="40dp"
+        android:backgroundTint="#858585"
         android:text="@string/reports"
-        android:backgroundTint="@color/black"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnExpenses" />
+        app:layout_constraintTop_toBottomOf="@+id/btnExpenses"
+        tools:ignore="TextContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"
@@ -65,7 +68,8 @@
         android:layout_height="54dp"
         android:layout_marginTop="48dp"
         android:text="@string/logout"
-        android:backgroundTint="@color/black"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
