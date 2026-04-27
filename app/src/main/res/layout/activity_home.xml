@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".Home">
 
     <TextView
@@ -26,42 +27,60 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:text="@string/welcome_user"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnExpenses"
-        android:layout_width="175dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="242dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="124dp"
         android:text="@string/expenses"
+        android:backgroundTint="@color/black"
+        app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReports"
-        android:layout_width="176dp"
-        android:layout_height="48dp"
+        android:layout_width="242dp"
+        android:layout_height="54dp"
         android:layout_marginTop="40dp"
         android:text="@string/reports"
+        android:backgroundTint="@color/black"
+        app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnExpenses" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogout"
-        android:layout_width="171dp"
-        android:layout_height="48dp"
+        android:layout_width="242dp"
+        android:layout_height="54dp"
         android:layout_marginTop="48dp"
         android:text="@string/logout"
+        android:backgroundTint="@color/black"
+        app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnReports" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="97dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/user_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
