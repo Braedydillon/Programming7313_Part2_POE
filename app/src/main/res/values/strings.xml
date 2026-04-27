@@ -36,4 +36,6 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="enter_a_minimum_goal1">Enter a minimum goal</string>
+    <string name="search_by_name_or_category">Search by name or category</string>
+    <string name="return_home">Return Home</string>
 </resources>

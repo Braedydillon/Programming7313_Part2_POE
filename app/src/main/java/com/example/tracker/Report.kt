@@ -2,6 +2,7 @@ package com.example.tracker
 
 import Data.database.AppDatabase
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -18,10 +19,14 @@ import java.util.Calendar
 class Report : AppCompatActivity() {
     private lateinit var edtStartDate: EditText
     private lateinit var edtEndDate: EditText
+    private lateinit var edtSearchName: EditText
     private lateinit var btnFilter: Button
     private lateinit var txtTotal: TextView
-        private lateinit var txtExpenses: TextView
+    private lateinit var txtExpenses: TextView
     private lateinit var db: AppDatabase
+
+    private lateinit var returnhome: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +37,11 @@ class Report : AppCompatActivity() {
 
         edtStartDate = findViewById(R.id.startdate)
         edtEndDate = findViewById(R.id.enddate)
+        edtSearchName = findViewById(R.id.searchname)
         btnFilter = findViewById(R.id.filter)
         txtTotal = findViewById(R.id.Total)
         txtExpenses = findViewById(R.id.expenses)
+        returnhome = findViewById(R.id.Return_From_Expenses)
 
         edtStartDate.setOnClickListener {
             showStartDatePicker()
@@ -51,23 +58,58 @@ class Report : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //home
+        returnhome.setOnClickListener {
+            Toast.makeText(this, "Going home", Toast.LENGTH_SHORT).show()
+
+            // Point the intent specifically to your Home class
+            val intent = Intent(this, Home::class.java)
+
+            // Clear out any other screens sitting on top of the Home page
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun filterExpenses() {
         val startDate = edtStartDate.text.toString()
         val endDate = edtEndDate.text.toString()
+        val searchName = edtSearchName.text.toString().trim()
 
-        if (startDate.isEmpty() || endDate.isEmpty()) {
-            Toast.makeText(this, "Please select both dates", Toast.LENGTH_SHORT).show()
+        // 1. Check if everything is empty
+        if (startDate.isEmpty() && endDate.isEmpty() && searchName.isEmpty()) {
+            Toast.makeText(this, "Please enter dates or a search term", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // 2. Check if only one date is filled (preventing errors in the database query)
+        if ((startDate.isNotEmpty() && endDate.isEmpty()) || (startDate.isEmpty() && endDate.isNotEmpty())) {
+            Toast.makeText(this, "Please select both start and end dates, or clear them to search only by name", Toast.LENGTH_LONG).show()
             return
         }
 
         lifecycleScope.launch {
-            val filteredExpenses = db.expenseDao().getExpensesBetweenDates(startDate, endDate)
-            
+            // 3. Fetch from database based on whether dates were provided
+            var filteredExpenses = if (startDate.isNotEmpty() && endDate.isNotEmpty()) {
+                db.expenseDao().getExpensesBetweenDates(startDate, endDate)
+            } else {
+                db.expenseDao().getAllExpenses() // Fallback to all expenses if dates are empty
+            }
+
+            // 4. If a search term was typed, filter the list down
+            if (searchName.isNotEmpty()) {
+                filteredExpenses = filteredExpenses.filter { expense ->
+                    expense.category.contains(searchName, ignoreCase = true) ||
+                            expense.description.contains(searchName, ignoreCase = true)
+                }
+            }
+
+            // 5. Update the UI with the final list
             runOnUiThread {
                 if (filteredExpenses.isEmpty()) {
-                    txtExpenses.text = "No expenses found between the selected dates"
+                    txtExpenses.text = "No expenses found matching your criteria"
                     txtTotal.text = "Total: R0.00"
                 } else {
                     var resultsText = ""
@@ -130,4 +172,7 @@ class Report : AppCompatActivity() {
         )
         datePickerDialog.show()
     }
+
+ // return to home
+
 }
