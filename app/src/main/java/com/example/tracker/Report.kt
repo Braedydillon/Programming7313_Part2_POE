@@ -120,6 +120,7 @@ class Report : AppCompatActivity() {
                         resultsText += "Amount: R${expense.amount}\n"
                         resultsText += "Date: ${expense.date}\n"
                         resultsText += "Description: ${expense.description}\n\n"
+                        resultsText += "Photo: ${expense.photoUri}"
 
                         totalAmount += expense.amount
                     }
