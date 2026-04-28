@@ -1,12 +1,16 @@
 package com.example.tracker
 
 import Data.database.AppDatabase
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.net.Uri
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +26,7 @@ class Report : AppCompatActivity() {
     private lateinit var edtSearchName: EditText
     private lateinit var btnFilter: Button
     private lateinit var txtTotal: TextView
-    private lateinit var txtExpenses: TextView
+    private lateinit var expensesContainer: LinearLayout
     private lateinit var db: AppDatabase
 
     private lateinit var returnhome: Button
@@ -40,7 +44,7 @@ class Report : AppCompatActivity() {
         edtSearchName = findViewById(R.id.searchname)
         btnFilter = findViewById(R.id.filter)
         txtTotal = findViewById(R.id.Total)
-        txtExpenses = findViewById(R.id.expenses)
+        expensesContainer = findViewById(R.id.expensesContainer)
         returnhome = findViewById(R.id.Return_From_Expenses)
 
         edtStartDate.setOnClickListener {
@@ -73,6 +77,7 @@ class Report : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n", "UseKtx")
     private fun filterExpenses() {
         val startDate = edtStartDate.text.toString()
         val endDate = edtEndDate.text.toString()
@@ -108,30 +113,68 @@ class Report : AppCompatActivity() {
 
             // 5. Update the UI with the final list
             runOnUiThread {
+                expensesContainer.removeAllViews()
                 if (filteredExpenses.isEmpty()) {
-                    txtExpenses.text = "No expenses found matching your criteria"
+                    val noDataText = TextView(this@Report).apply {
+                        text = "No expenses found matching your criteria"
+                        setTextColor(getColor(android.R.color.white))
+                        gravity = android.view.Gravity.CENTER
+                    }
+                    expensesContainer.addView(noDataText)
                     txtTotal.text = "Total: R0.00"
                 } else {
-                    var resultsText = ""
                     var totalAmount = 0.0
 
                     for (expense in filteredExpenses) {
-                        resultsText += "Category: ${expense.category}\n"
-                        resultsText += "Amount: R${expense.amount}\n"
-                        resultsText += "Date: ${expense.date}\n"
-                        resultsText += "Description: ${expense.description}\n\n"
-                        resultsText += "Photo: ${expense.photoUri}"
+                        val expenseView = TextView(this@Report).apply {
+                            text = "Category: ${expense.category}\n" +
+                                   "Amount: R${expense.amount}\n" +
+                                   "Date: ${expense.date}\n" +
+                                   "Description: ${expense.description}\n"
+                            setTextColor(getColor(android.R.color.white))
+                            setPadding(0, 16, 0, 8)
+                        }
+                        expensesContainer.addView(expenseView)
+
+                        if (!expense.photoUri.isNullOrEmpty()) {
+                            val imageView = ImageView(this@Report).apply {
+                                layoutParams = LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    600
+                                )
+                                scaleType = ImageView.ScaleType.CENTER_INSIDE
+                                try {
+                                    val uri = Uri.parse(expense.photoUri)
+                                    // Try to open a stream to check permissions
+                                    contentResolver.openInputStream(uri)?.use {
+                                        setImageURI(uri)
+                                    } ?: run {
+                                        visibility = android.view.View.GONE
+                                    }
+                                } catch (_: Exception) {
+                                    visibility = android.view.View.GONE
+                                }
+                                setPadding(0, 0, 0, 16)
+                            }
+                            expensesContainer.addView(imageView)
+                        }
+
+                        val separator = android.view.View(this@Report).apply {
+                            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1)
+                            setBackgroundColor(getColor(android.R.color.darker_gray))
+                        }
+                        expensesContainer.addView(separator)
 
                         totalAmount += expense.amount
                     }
 
-                    txtExpenses.text = resultsText
                     txtTotal.text = "Total: R%.2f".format(totalAmount)
                 }
             }
         }
     }
 
+    @SuppressLint("DefaultLocale")
     private fun showStartDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -153,6 +196,7 @@ class Report : AppCompatActivity() {
         datePickerDialog.show()
     }
 
+    @SuppressLint("DefaultLocale")
     private fun showEndDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)

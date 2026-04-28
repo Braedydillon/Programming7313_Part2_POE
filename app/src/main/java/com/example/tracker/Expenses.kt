@@ -2,6 +2,7 @@ package com.example.tracker
 
 import Data.Expense
 import Data.MonthlyGoal
+import android.content.Intent
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
 import Data.database.AppDatabase
@@ -60,7 +61,7 @@ class Expenses : AppCompatActivity() {
         }
 
         btnPhoto.setOnClickListener {
-            imagePickerLauncher.launch("image/*")
+            imagePickerLauncher.launch(arrayOf("image/*"))
         }
 
         btnSave.setOnClickListener {
@@ -82,9 +83,18 @@ class Expenses : AppCompatActivity() {
     }
 
     private val imagePickerLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent()
+        ActivityResultContracts.OpenDocument()
     ) { uri: Uri? ->
         if (uri != null) {
+            try {
+                // Grant persistable permission so the app can access the image even after a restart
+                contentResolver.takePersistableUriPermission(
+                    uri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION
+                )
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
             selectedPhotoUrl = uri.toString()
             Toast.makeText(this, "Image selected", Toast.LENGTH_SHORT).show()
         }
