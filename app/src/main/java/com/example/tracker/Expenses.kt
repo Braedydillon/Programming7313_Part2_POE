@@ -2,8 +2,8 @@ package com.example.tracker
 
 import Data.Expense
 import Data.MonthlyGoal
-import Data.dao.ExpenseDao
-import Data.dao.MonthlyDao
+import android.net.Uri
+import androidx.activity.result.contract.ActivityResultContracts
 import Data.database.AppDatabase
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
@@ -60,7 +60,7 @@ class Expenses : AppCompatActivity() {
         }
 
         btnPhoto.setOnClickListener {
-
+            imagePickerLauncher.launch("image/*")
         }
 
         btnSave.setOnClickListener {
@@ -78,6 +78,15 @@ class Expenses : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    private val imagePickerLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            selectedPhotoUrl = uri.toString()
+            Toast.makeText(this, "Image selected", Toast.LENGTH_SHORT).show()
         }
     }
 
