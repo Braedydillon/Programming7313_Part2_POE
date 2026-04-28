@@ -28,18 +28,20 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="260dp"
         android:layout_height="48dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="68dp"
         android:autofillHints=""
+        android:background="@drawable/edittext_outline"
         android:ems="10"
         android:hint="@string/please_enter_your_name"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="@color/white"
+        android:paddingStart="20dp"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -48,22 +50,24 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:ems="10"
+        android:paddingStart="20dp"
         android:hint="@string/please_enter_your_password"
+        android:background="@drawable/edittext_outline"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="242dp"
         android:layout_height="54dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="148dp"
         android:backgroundTint="@color/black"
         android:text="@string/login"
         app:cornerRadius="12dp"

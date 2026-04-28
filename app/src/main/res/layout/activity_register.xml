@@ -12,11 +12,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="76dp"
         android:text="@string/register_page"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,52 +24,60 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
+        android:layout_width="350dp"
+        android:layout_height="44dp"
         android:layout_marginTop="52dp"
         android:autofillHints=""
+        android:background="@drawable/edittext_outline"
         android:ems="10"
         android:hint="@string/please_enter_your_name2"
         android:inputType="text"
         android:minHeight="48dp"
+        android:paddingStart="20dp"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
+        android:layout_width="350dp"
+        android:layout_height="44dp"
         android:layout_marginTop="60dp"
         android:autofillHints=""
+        android:background="@drawable/edittext_outline"
         android:ems="10"
         android:hint="@string/please_enter_your_password2"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:paddingStart="20dp"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextText2"
+        tools:ignore="RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/editTextTextPassword3"
-        android:layout_width="260dp"
-        android:layout_height="48dp"
+        android:layout_width="350dp"
+        android:layout_height="44dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/edittext_outline"
         android:ems="10"
         android:hint="@string/please_confirm_your_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:paddingStart="20dp"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-        tools:ignore="Autofill,TextContrastCheck" />
+        tools:ignore="Autofill,RtlSymmetry,TextContrastCheck,TouchTargetSizeCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
